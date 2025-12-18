@@ -185,9 +185,9 @@ pdf.job_entry("11.2006 - 12.2014", "QSC AG", "System Engineer / IT Security", [
     "Technische Ausbildung von Azubis"
 ])
 
-pdf.add_page() # Harter Umbruch wie gewünscht
+pdf.add_page() 
 
-pdf.set_y(20) # Start oben auf Seite 2 (da kein Header Text)
+pdf.set_y(20) # hard break, set header
 
 # Skills
 pdf.section_title("Fachkenntnisse & Stack")
