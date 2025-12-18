@@ -193,10 +193,10 @@ pdf.set_y(20) # hard break, set header
 pdf.section_title("Fachkenntnisse & Stack")
 
 # summary
-pdf.skill_block("Container", "Kubernetes, Docker (Enterprise, Swarm), Ansible")
+pdf.skill_block("Container", "Docker (Enterprise, Swarm), Ansible, Kubernetes basics")
 pdf.skill_block("OS", "Linux Expert (RHEL, SLES, Debian, Ubuntu), Unix")
 pdf.skill_block("Data/DB", "Cloudera, Kafka, MariaDB, Postgres, Splunk")
-pdf.skill_block("Security", "Nessus, OpenVAS, VPN, Kryptographie, ISO 27001")
+pdf.skill_block("Security", "Nessus, OpenVAS, metasploit, rfid/nfc, ISO 27001")
 pdf.skill_block("Web/Tools", "Apache, Nginx, CheckMK, Nagios, Wireshark, Jira")
 
 # projects
