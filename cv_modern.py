@@ -1,4 +1,15 @@
-from fpdf import FPDF
+import sys
+
+# Check if fpdf is installed
+try:
+    from fpdf import FPDF
+except ImportError:
+    print("\n---------------------------------------------------------")
+    print("FEHLER: Das Modul 'fpdf' fehlt.")
+    print("Bitte installiere es mit folgendem Befehl im Terminal:")
+    print("pip install fpdf")
+    print("---------------------------------------------------------\n")
+    sys.exit(1)
 
 # props to pw_ for layout
 class WenzkeCV(FPDF):
