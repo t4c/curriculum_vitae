@@ -23,7 +23,7 @@ class WenzkeCV(FPDF):
             self.set_xy(75, 30)
             self.set_font('Helvetica', '', 12)
             self.set_text_color(100)
-            self.cell(0, 8, 'Principal Solution Architect & Security Expert', border=0, align='L', new_x="LMARGIN", new_y="NEXT")
+            self.cell(0, 8, 'Principal Solution Architect', border=0, align='L', new_x="LMARGIN", new_y="NEXT")
 
     def footer(self):
         self.set_y(-15)
