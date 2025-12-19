@@ -221,4 +221,4 @@ pdf.job_entry("2022 - 2024", "Big Data Ops (Automotive)", "Ops Engineer", [
 ])
 
 pdf.output("Milan_Berger_CV.pdf")
-print("PDF created successfully (Clean Code with English comments).")
+print("PDF created successfully")
