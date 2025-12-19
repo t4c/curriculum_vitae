@@ -1,17 +1,15 @@
 import sys
 
-# Check if fpdf is installed
 try:
     from fpdf import FPDF
 except ImportError:
     print("\n---------------------------------------------------------")
-    print("FEHLER: Das Modul 'fpdf' fehlt.")
-    print("Bitte installiere es mit folgendem Befehl im Terminal:")
+    print("ERROR: The module 'fpdf' is missing.")
+    print("Please install it using the following command in your terminal:")
     print("pip install fpdf")
     print("---------------------------------------------------------\n")
     sys.exit(1)
 
-# props to pw_ for layout
 class WenzkeCV(FPDF):
     def header(self):
         self.set_fill_color(60, 60, 60)
@@ -19,51 +17,51 @@ class WenzkeCV(FPDF):
 
         if self.page_no() == 1:
             self.set_xy(75, 20)
-            self.set_font('Arial', 'B', 24)
+            self.set_font('Helvetica', 'B', 24)
             self.set_text_color(0)
-            self.cell(0, 10, 'MILAN BERGER', 0, 1, 'L')
-
+            self.cell(0, 10, 'MILAN BERGER', border=0, align='L', new_x="LMARGIN", new_y="NEXT")
             self.set_xy(75, 30)
-            self.set_font('Arial', '', 12)
+            self.set_font('Helvetica', '', 12)
             self.set_text_color(100)
-            self.cell(0, 8, 'Principal Solution Architect & Security Expert', 0, 1, 'L')
+            self.cell(0, 8, 'Principal Solution Architect & Security Expert', border=0, align='L', new_x="LMARGIN", new_y="NEXT")
 
     def footer(self):
         self.set_y(-15)
         self.set_x(70)
-        self.set_font('Arial', '', 8)
+        self.set_font('Helvetica', '', 8)
         self.set_text_color(150)
-        self.cell(0, 10, f'Seite {self.page_no()}', 0, 0, 'R')
+        self.cell(0, 10, f'Seite {self.page_no()}', border=0, align='R', new_x="RIGHT", new_y="TOP")
 
     def draw_sidebar_content(self, certs, languages):
         self.set_y(50)
         self.set_left_margin(5)
         self.set_right_margin(145)
-
         self.set_text_color(255, 255, 255)
 
-        self.set_font('Arial', 'B', 11)
+        # CONTACT
+        self.set_font('Helvetica', 'B', 11)
         self.set_x(5)
-        self.cell(60, 8, "KONTAKT", 0, 1, 'L')
-        self.set_font('Arial', '', 9)
+        self.cell(60, 8, "KONTAKT", border=0, align='L', new_x="LMARGIN", new_y="NEXT")    
+        self.set_font('Helvetica', '', 9)
         self.set_x(5)
         self.multi_cell(60, 5, "Bunzlauer Straße 61\n90473 Nürnberg", align='L')
         self.ln(8)
 
-        self.set_font('Arial', 'B', 11)
+        # lang
+        self.set_font('Helvetica', 'B', 11)
         self.set_x(5)
-        self.cell(60, 8, "SPRACHEN", 0, 1, 'L')
-        self.set_font('Arial', '', 9)
+        self.cell(60, 8, "SPRACHEN", border=0, align='L', new_x="LMARGIN", new_y="NEXT")
+        self.set_font('Helvetica', '', 9)
         for lang in languages:
             self.set_x(5)
-            self.cell(60, 5, lang, 0, 1)
+            self.cell(60, 5, lang, border=0, align='L', new_x="LMARGIN", new_y="NEXT")
         self.ln(8)
 
         # certs
-        self.set_font('Arial', 'B', 11)
+        self.set_font('Helvetica', 'B', 11)
         self.set_x(5)
-        self.cell(60, 8, "ZERTIFIKATE", 0, 1, 'L')
-        self.set_font('Arial', '', 8)
+        self.cell(60, 8, "ZERTIFIKATE", border=0, align='L', new_x="LMARGIN", new_y="NEXT")
+        self.set_font('Helvetica', '', 8)
         for cert in certs:
             self.set_x(5)
             self.multi_cell(60, 4, f"- {cert}", align='L')
@@ -73,34 +71,32 @@ class WenzkeCV(FPDF):
     def section_title(self, title):
         self.ln(5)
         self.set_x(75)
-        self.set_font('Arial', 'B', 12)
+        self.set_font('Helvetica', 'B', 12)
         self.set_text_color(30, 30, 30)
-        self.cell(0, 8, title.upper(), 0, 1, 'L')
+        self.cell(0, 8, title.upper(), border=0, align='L', new_x="LMARGIN", new_y="NEXT")
         self.set_draw_color(200)
         self.line(75, self.get_y(), 200, self.get_y())
         self.ln(5)
 
     def job_entry(self, date, company, role, details):
         self.set_x(75)
-
-        # time
-        self.set_font('Arial', 'B', 10)
+        self.set_font('Helvetica', 'B', 10)
         self.set_text_color(0)
-        self.cell(35, 5, date, 0, 0, 'L')
+        self.cell(35, 5, date, border=0, align='L', new_x="RIGHT", new_y="TOP")
 
-        # comapnies
-        self.set_font('Arial', 'B', 11)
-        self.cell(0, 5, company, 0, 1, 'L')
+        # Company
+        self.set_font('Helvetica', 'B', 11)
+        self.cell(0, 5, company, border=0, align='L', new_x="LMARGIN", new_y="NEXT")
 
-        # roles
+        # Role
         self.set_x(110)
-        self.set_font('Arial', 'I', 10)
+        self.set_font('Helvetica', 'I', 10)
         self.set_text_color(50)
-        self.cell(0, 5, role, 0, 1, 'L')
+        self.cell(0, 5, role, border=0, align='L', new_x="LMARGIN", new_y="NEXT")
 
-        # details
+        # Details
         self.ln(2)
-        self.set_font('Arial', '', 10)
+        self.set_font('Helvetica', '', 10)
         self.set_text_color(30)
         for line in details:
             self.set_x(110)
@@ -109,15 +105,13 @@ class WenzkeCV(FPDF):
 
     def skill_block(self, category, items):
         self.set_x(75)
-        self.set_font('Arial', 'B', 10)
+        self.set_font('Helvetica', 'B', 10)
         self.set_text_color(0)
-        self.cell(40, 5, category + ":", 0, 0)
-
-        self.set_font('Arial', '', 10)
+        self.cell(40, 5, category + ":", border=0, align='L', new_x="RIGHT", new_y="TOP")
+        self.set_font('Helvetica', '', 10)
         self.set_text_color(50)
         self.multi_cell(0, 5, items, align='L')
         self.ln(1)
-
 
 certs_list = [
     "LPT (Licensed Penetration Tester)",
@@ -149,12 +143,12 @@ pdf.set_left_margin(75)
 pdf.set_right_margin(10)
 pdf.set_y(45)
 
-pdf.set_font('Arial', '', 10)
+pdf.set_font('Helvetica', '', 10)
 pdf.set_text_color(50)
 pdf.multi_cell(0, 5, summary, align='L')
 pdf.ln(5)
 
-# background
+# experience
 pdf.section_title("Berufserfahrung")
 
 # Adesso
@@ -196,24 +190,21 @@ pdf.job_entry("11.2006 - 12.2014", "QSC AG", "System Engineer / IT Security", [
     "Technische Ausbildung von Azubis"
 ])
 
+# hard break to page 2
 pdf.add_page() 
+pdf.set_y(20) 
 
-pdf.set_y(20) # hard break, set header
-
-# Skills
+# skills
 pdf.section_title("Fachkenntnisse & Stack")
-
-# summary
 pdf.skill_block("Container", "Docker (Enterprise, Swarm), Ansible, Kubernetes basics")
 pdf.skill_block("OS", "Linux Expert (RHEL, SLES, Debian, Ubuntu), Unix")
 pdf.skill_block("Data/DB", "Cloudera, Kafka, MariaDB, Postgres, Splunk")
 pdf.skill_block("Security", "Nessus, OpenVAS, metasploit, rfid/nfc, ISO 27001")
 pdf.skill_block("Web/Tools", "Apache, Nginx, CheckMK, Nagios, Wireshark, Jira")
 
-# projects
+# Selected Projects
 pdf.ln(5)
 pdf.section_title("Ausgewählte Projekte")
-
 pdf.job_entry("Laufend", "Managed Services (Adesso)", "Lead Architect", [
     "Konzeption hochverfügbarer K8s-Umgebungen",
     "Prozessoptimierung Datenanalyse"
@@ -230,4 +221,4 @@ pdf.job_entry("2022 - 2024", "Big Data Ops (Automotive)", "Ops Engineer", [
 ])
 
 pdf.output("Milan_Berger_CV.pdf")
-print("PDF exportiert.")
+print("PDF created successfully (Clean Code with English comments).")
