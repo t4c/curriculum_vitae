@@ -206,8 +206,8 @@ pdf.skill_block("Web/Tools", "Apache, Nginx, CheckMK, Nagios, Wireshark, Jira")
 pdf.ln(5)
 pdf.section_title("Ausgewählte Projekte")
 pdf.job_entry("Laufend", "Managed Services (Adesso)", "Lead Architect", [
-    "Konzeption hochverfügbarer K8s-Umgebungen",
-    "Prozessoptimierung Datenanalyse"
+    "Verantwortung für den Cluster-Betrieb (Tech Lead)",
+    "Fachliche Teamführung & Prozessoptimierung"
 ])
 
 pdf.job_entry("Laufend", "Digitalisierung (Pharmastore)", "Projektleitung", [
