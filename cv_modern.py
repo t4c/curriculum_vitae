@@ -1,14 +1,6 @@
 import sys
 
-try:
-    from fpdf import FPDF
-except ImportError:
-    print("\n---------------------------------------------------------")
-    print("ERROR: The module 'fpdf' is missing.")
-    print("Please install it using the following command in your terminal:")
-    print("pip install fpdf")
-    print("---------------------------------------------------------\n")
-    sys.exit(1)
+from fpdf import FPDF
 
 class WenzkeCV(FPDF):
     def header(self):
